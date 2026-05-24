@@ -2,7 +2,7 @@
   "name": "flux-offline-file-converter",
   "description": "Free and secure offline file converter supporting 200+ formats. Convert images, videos, audio, and documents locally.",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",

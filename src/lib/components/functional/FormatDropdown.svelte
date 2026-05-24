@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { duration, fade, transition } from "$lib/util/animation";
+	import { fly as svelteFly } from "svelte/transition";
 	import { m } from "$lib/paraglide/messages";
 	import { isMobile, files, dropdownStates } from "$lib/store/index.svelte";
 	import type { Categories } from "$lib/types";
@@ -34,8 +35,6 @@
 	let searchQuery = $state("");
 	let dropdownMenu: HTMLElement | undefined = $state();
 	let rootCategory: string | null = null;
-	let dropdownPosition = $state<"left" | "center" | "right">("center");
-	let dropdownVerticalPosition = $state<"bottom" | "top">("bottom");
 
 	// initialize current category
 	$effect(() => {
@@ -46,6 +45,15 @@
 		const pickCategoryFromConverters = (
 			convList: VertFile["converters"],
 		) => {
+			// If we know the source format, use the category it belongs to
+			if (from) {
+				for (const cat of Object.keys(categories)) {
+					if (categories[cat].formats.includes(from)) {
+						return cat;
+					}
+				}
+			}
+
 			let bestCategory: string | null = null;
 			let maxOverlap = 0;
 
@@ -260,45 +268,6 @@
 		open = !open;
 		if (!open) return;
 
-		// keep within viewport
-		if (dropdown) {
-			const rect = dropdown.getBoundingClientRect();
-			const viewportWidth = window.innerWidth;
-
-			let dropdownWidth: number;
-			if (dropdownSize === "large") {
-				dropdownWidth = rect.width * 3.2;
-			} else if (dropdownSize === "default") {
-				dropdownWidth = rect.width * 2.5;
-			} else {
-				dropdownWidth = rect.width * 1.5;
-			}
-
-			const centerX = rect.left + rect.width / 2;
-			const leftEdge = centerX - dropdownWidth / 2;
-			const rightEdge = centerX + dropdownWidth / 2;
-
-			if (leftEdge < 0) {
-				dropdownPosition = "left";
-			} else if (rightEdge > viewportWidth) {
-				dropdownPosition = "right";
-			} else {
-				dropdownPosition = "center";
-			}
-
-			// check vertical space to decide whether to open upward or downward
-			const viewportHeight = window.innerHeight;
-			const spaceBelow = viewportHeight - rect.bottom;
-			const spaceAbove = rect.top;
-			const dropdownHeight = 320; // max-h-80 is 320px
-
-			if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
-				dropdownVerticalPosition = "top";
-			} else {
-				dropdownVerticalPosition = "bottom";
-			}
-		}
-
 		setTimeout(() => {
 			if (!dropdownMenu) return;
 			const searchInput = dropdownMenu.querySelector(
@@ -345,13 +314,7 @@
 			}
 		};
 
-		const handleResize = () => {
-			if (open) {
-				// recalculate dropdown position on resize
-				clickDropdown();
-				open = true;
-			}
-		};
+		const handleResize = () => {};
 
 		window.addEventListener("click", handleClickOutside);
 		window.addEventListener("resize", handleResize);
@@ -360,11 +323,21 @@
 			window.removeEventListener("resize", handleResize);
 		};
 	});
+
+	function portal(node: HTMLElement) {
+		document.body.appendChild(node);
+		return {
+			destroy() {
+				if (node.parentNode) {
+					node.parentNode.removeChild(node);
+				}
+			},
+		};
+	}
 </script>
 
 <div
-	class="relative w-full min-w-fit text-xl font-medium text-center {open ? 'z-[100]' : 'z-auto'}"
-	data-open={open}
+	class="relative w-full min-w-fit text-xl font-medium text-center"
 	bind:this={dropdown}
 >
 	<button
@@ -410,33 +383,32 @@
 		/>
 	</button>
 	{#if open}
-		<div
-			bind:this={dropdownMenu}
-			transition:fade={{
-				duration,
-				easing: quintOut,
-			}}
-			class={clsx(
-				$isMobile
-					? "fixed inset-x-0 bottom-0 w-full z-[200] shadow-xl bg-panel-alt shadow-black/25 rounded-t-2xl overflow-hidden"
-					: "min-w-full shadow-xl bg-panel-alt shadow-black/25 absolute z-50 rounded-2xl overflow-hidden",
-				!$isMobile && {
-					"w-[320%]": dropdownSize === "large",
-					"w-[250%]": dropdownSize === "default",
-					"w-[150%]": dropdownSize === "small",
-				},
-				!$isMobile && {
-					"-translate-x-1/2 left-1/2": dropdownPosition === "center",
-					"left-0": dropdownPosition === "left",
-					"right-0": dropdownPosition === "right",
-				},
-				!$isMobile && {
-					"bottom-full mb-2": dropdownVerticalPosition === "top",
-					"top-full mt-2": dropdownVerticalPosition === "bottom",
-				},
-			)}
-		>
-			<!-- search box -->
+		<div use:portal class="z-[9999]">
+			<!-- svelte-ignore a11y_click_events_have_key_events -->
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div
+				class="fixed inset-0 z-[9998] bg-black/50"
+				transition:fade={{ duration }}
+				onclick={(e) => {
+					e.stopPropagation();
+					open = false;
+				}}
+			></div>
+			<div
+				bind:this={dropdownMenu}
+				transition:svelteFly={{
+					y: 300,
+					duration,
+					easing: quintOut,
+				}}
+				class="fixed inset-x-0 bottom-0 w-full z-[9999] shadow-2xl rounded-t-[1.75rem] overflow-hidden flex flex-col pb-6 max-h-[85vh]"
+				style="background-color: var(--bg); padding-bottom: max(env(safe-area-inset-bottom), 1.5rem);"
+			>
+				<!-- drag pill like iOS -->
+				<div class="w-full flex justify-center pt-3 pb-2">
+					<div class="w-12 h-1.5 rounded-full bg-separator"></div>
+				</div>
+				<!-- search box -->
 			<div class="p-3 w-full">
 				<div class="relative">
 					<input
@@ -489,7 +461,7 @@
 						<button
 							class="w-full p-2 text-center rounded-xl
 							{format === selected
-								? 'bg-accent text-white'
+								? 'bg-accent text-black'
 								: format === from
 									? 'bg-separator'
 									: 'hover:bg-panel'}"
@@ -511,7 +483,7 @@
 			{#if file?.name.toLowerCase().endsWith(".zip")}
 				<div class="border-t border-separator text-base p-2">
 					<button
-						class="w-full p-2 text-center rounded-lg bg-accent text-white"
+						class="w-full p-2 text-center rounded-lg bg-accent text-black"
 						onclick={() => extract()}
 					>
 						{m["convert.archive_file.extract"]()}
@@ -519,11 +491,6 @@
 				</div>
 			{/if}
 		</div>
+		</div>
 	{/if}
 </div>
-
-<style>
-	:global(.relative:has(div[data-open="true"])) {
-		z-index: 100 !important;
-	}
-</style>

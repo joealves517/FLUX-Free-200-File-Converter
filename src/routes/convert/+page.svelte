@@ -49,8 +49,8 @@
 
 			let category: string | undefined;
 			const isImage = converter.name === "imagemagick";
-			const isAudio = converter.name === "ffmpeg";
-			const isVideo = converter.name === "ffmpeg" && videoFormats.includes(file.from.replace(".", ""));
+			const isVideo = converter.name === "ffmpeg" && videoFormats.includes(file.from.replace(".", "").toLowerCase());
+			const isAudio = converter.name === "ffmpeg" && !isVideo;
 			const isDocument = converter.name === "pandoc";
 
 			if (isImage) category = "image";
