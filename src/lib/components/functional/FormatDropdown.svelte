@@ -35,6 +35,7 @@
 	let dropdownMenu: HTMLElement | undefined = $state();
 	let rootCategory: string | null = null;
 	let dropdownPosition = $state<"left" | "center" | "right">("center");
+	let dropdownVerticalPosition = $state<"bottom" | "top">("bottom");
 
 	// initialize current category
 	$effect(() => {
@@ -284,6 +285,18 @@
 			} else {
 				dropdownPosition = "center";
 			}
+
+			// check vertical space to decide whether to open upward or downward
+			const viewportHeight = window.innerHeight;
+			const spaceBelow = viewportHeight - rect.bottom;
+			const spaceAbove = rect.top;
+			const dropdownHeight = 320; // max-h-80 is 320px
+
+			if (spaceBelow < dropdownHeight && spaceAbove > spaceBelow) {
+				dropdownVerticalPosition = "top";
+			} else {
+				dropdownVerticalPosition = "bottom";
+			}
 		}
 
 		setTimeout(() => {
@@ -350,7 +363,7 @@
 </script>
 
 <div
-	class="relative w-full min-w-fit text-xl font-medium text-center"
+	class="relative w-full min-w-fit text-xl font-medium text-center {open ? 'z-[100]' : 'z-auto'}"
 	bind:this={dropdown}
 >
 	<button
@@ -405,7 +418,7 @@
 			class={clsx(
 				$isMobile
 					? "fixed inset-x-0 bottom-0 w-full z-[200] shadow-xl bg-panel-alt shadow-black/25 rounded-t-2xl overflow-hidden"
-					: "min-w-full shadow-xl bg-panel-alt shadow-black/25 absolute top-full mt-2 z-50 rounded-2xl overflow-hidden",
+					: "min-w-full shadow-xl bg-panel-alt shadow-black/25 absolute z-50 rounded-2xl overflow-hidden",
 				!$isMobile && {
 					"w-[320%]": dropdownSize === "large",
 					"w-[250%]": dropdownSize === "default",
@@ -415,6 +428,10 @@
 					"-translate-x-1/2 left-1/2": dropdownPosition === "center",
 					"left-0": dropdownPosition === "left",
 					"right-0": dropdownPosition === "right",
+				},
+				!$isMobile && {
+					"bottom-full mb-2": dropdownVerticalPosition === "top",
+					"top-full mt-2": dropdownVerticalPosition === "bottom",
 				},
 			)}
 		>
