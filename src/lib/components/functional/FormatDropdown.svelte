@@ -364,6 +364,7 @@
 
 <div
 	class="relative w-full min-w-fit text-xl font-medium text-center {open ? 'z-[100]' : 'z-auto'}"
+	data-open={open}
 	bind:this={dropdown}
 >
 	<button
@@ -520,3 +521,9 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	:global(.relative:has(div[data-open="true"])) {
+		z-index: 100 !important;
+	}
+</style>
