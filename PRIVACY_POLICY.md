@@ -54,5 +54,4 @@ We may update this Privacy Policy from time to time to reflect modifications in 
 ## 7. CONTACT US
 
 If you have any questions or concerns about our privacy practices, please contact us at:
-Email: hello@flux.sh
-Website: https://flux.sh
+Email: alvesoscar517@gmail.com
