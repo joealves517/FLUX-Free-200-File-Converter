@@ -24,23 +24,23 @@
 
 	@keyframes dragoverlay-animation {
 		0% {
-			@apply glass-icon-pink;
+			@apply bg-pink-500 text-white shadow-sm border border-black/5;
 		}
 
 		25% {
-			@apply glass-icon-blue;
+			@apply bg-blue-500 text-white shadow-sm border border-black/5;
 		}
 
 		50% {
-			@apply glass-icon-purple;
+			@apply bg-purple-500 text-white shadow-sm border border-black/5;
 		}
 
 		75% {
-			@apply glass-icon-red;
+			@apply bg-red-500 text-white shadow-sm border border-black/5;
 		}
 
 		100% {
-			@apply glass-icon-pink;
+			@apply bg-pink-500 text-white shadow-sm border border-black/5;
 		}
 	}
 </style>
