@@ -401,12 +401,12 @@
 					duration,
 					easing: quintOut,
 				}}
-				class="fixed inset-x-0 bottom-0 w-full z-[9999] shadow-2xl rounded-t-[1.75rem] overflow-hidden flex flex-col pb-6 max-h-[85vh]"
+				class="fixed inset-x-0 bottom-0 w-full max-w-[400px] mx-auto z-[9999] shadow-2xl rounded-t-[1.75rem] overflow-hidden flex flex-col pb-6 max-h-[85vh]"
 				style="background-color: var(--bg); padding-bottom: max(env(safe-area-inset-bottom), 1.5rem);"
 			>
 				<!-- drag pill like iOS -->
 				<div class="w-full flex justify-center pt-3 pb-2">
-					<div class="w-12 h-1.5 rounded-full bg-separator"></div>
+					<div class="w-10 h-1 rounded-full bg-separator opacity-60"></div>
 				</div>
 				<!-- search box -->
 			<div class="p-3 w-full">
@@ -414,7 +414,7 @@
 					<input
 						type="text"
 						placeholder={m["convert.dropdown.placeholder"]()}
-						class="flex-grow w-full !pl-11 !pr-3 rounded-lg bg-panel text-foreground"
+						class="flex-grow w-full !pl-11 !pr-3 rounded-lg bg-panel text-foreground focus:!outline-none focus:!ring-0"
 						bind:value={searchQuery}
 						oninput={handleSearch}
 						onkeydown={onEnter}
@@ -459,13 +459,14 @@
 				{#if filteredData.formats.length > 0}
 					{#each filteredData.formats as format}
 						<button
-							class="w-full p-2 text-center rounded-xl
+							class="w-full p-2 text-center rounded-xl transition-all duration-200
 							{format === selected
-								? 'bg-accent text-black'
+								? 'bg-accent text-black font-semibold'
 								: format === from
-									? 'bg-separator'
+									? 'opacity-40 cursor-not-allowed'
 									: 'hover:bg-panel'}"
 							onclick={() => selectOption(format)}
+							disabled={format === from}
 						>
 							{format}
 						</button>

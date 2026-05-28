@@ -1,9 +1,9 @@
 const PUB_DISABLE_ALL_EXTERNAL_REQUESTS = "false";
 const PUB_ENV = "production";
 
-export const GITHUB_URL_FLUX = "https://github.com/vert-sh/vert";
+export const GITHUB_URL_FLUX = "https://github.com/joealves517/FLUX-Free-200-File-Converter";
 export const __GITHUB_URL_FLUXD__ = "https://github.com/vert-sh/vertd";
-export const GITHUB_API_URL = "https://api.github.com/repos/vert-sh/vert";
+export const GITHUB_API_URL = "https://api.github.com/repos/joealves517/FLUX-Free-200-File-Converter";
 export const DISCORD_URL = "https://discord.gg/kqevGxYPak";
 export const FLUX_NAME =
 	PUB_ENV === "development"

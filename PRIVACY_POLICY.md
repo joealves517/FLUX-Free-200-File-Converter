@@ -30,7 +30,7 @@ We have a strict **no-tracking and no-personal data collection** policy.
 For full transparency, the FLUX extension only makes the following safe, outbound network requests strictly to perform non-intrusive operations:
 
 - **IPAPI (ipapi.co):** The extension makes a request to `https://ipapi.co/json/` to automatically detect your approximate location (country/region). This is used strictly to pre-select your preferred language for the interface. **No personal data is saved or linked to this request.**
-- **GitHub API:** The About page makes a request to `https://api.github.com/repos/vert-sh/vert/contributors` to retrieve the static avatar images and profile links of open-source contributors to the project.
+- **GitHub API:** The About page makes a request to `https://api.github.com/repos/joealves517/FLUX-Free-200-File-Converter/contributors` to retrieve the static avatar images and profile links of open-source contributors to the project.
 - **Plausible Analytics (Optional & Opt-out):** FLUX utilizes Plausible Analytics on the extension page to collect completely anonymous, aggregated visitor statistics. Plausible **does not use cookies, does not track individual identities, and stores no personal data.** You can easily opt-out of analytics at any time in the extension Settings.
 - **Stripe Payment Gateway:** If you choose to make a voluntary donation to support the project, payment processing is handled independently and securely by Stripe. FLUX does not see, collect, or store any of your financial, credit card, or payment details.
 
@@ -51,7 +51,14 @@ Because we collect 0 personal information and process all files locally, our ext
 We may update this Privacy Policy from time to time to reflect modifications in our local architecture. Any update will be immediately published on this page.
 
 
-## 7. CONTACT US
+## 7. LICENSE & OPEN SOURCE COMPLIANCE
+
+This extension is an open-source project that utilizes code from the [VERT](https://github.com/vert-sh/vert) project.
+
+In accordance with the GNU GPLv3 license (the 3.0 copyleft license), the full source code for this extension is publicly available. You can access, inspect, and modify our full source code at our public [GitHub repository](https://github.com/joealves517/FLUX-Free-200-File-Converter).
+
+
+## 8. CONTACT US
 
 If you have any questions or concerns about our privacy practices, please contact us at:
 Email: alvesoscar517@gmail.com

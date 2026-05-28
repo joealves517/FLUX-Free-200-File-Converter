@@ -5,7 +5,8 @@
 		"convert": "转换",
 		"settings": "设置",
 		"about": "关于",
-		"toggle_theme": "切换主题"
+		"toggle_theme": "切换主题",
+		"privacy": "隐私与许可"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
@@ -48,8 +49,14 @@
 	},
 	"convert": {
 		"archive_file": {
+			"extract": "Extract archive",
 			"extracting": "检测到 ZIP 压缩包：{filename}",
 			"extracted": "从 {filename} 中提取了 {extract_count} 个文件。{ignore_count} 个项目被忽略。",
+			"detected": "Detected {type} files in {filename}.",
+			"audio": "audio",
+			"video": "video",
+			"doc": "document",
+			"image": "image",
 			"extract_error": "提取 {filename} 时出错：{error}"
 		},
 		"large_file_warning": "由于浏览器/设备限制，此文件大于 {limit}GB，视频转音频功能已禁用。我们建议使用 Firefox 或 Safari 处理此大小的文件，因为它们的限制较少。",
@@ -71,7 +78,9 @@
 			"video": "视频",
 			"doc": "文档",
 			"image": "图片",
-			"placeholder": "搜索格式"
+			"placeholder": "搜索格式",
+			"no_formats": "No formats available",
+			"no_results": "No formats match your search"
 		},
 		"tooltips": {
 			"unknown_file": "未知文件类型",
@@ -99,6 +108,7 @@
 			"vertd_details_to": "<b>目标格式：</b>{to}",
 			"vertd_details_error_message": "<b>错误消息：</b>[view_link]查看错误日志[/view_link]",
 			"vertd_details_close": "关闭",
+			"vertd_ratelimit": "Your video, '{filename}', has failed to convert a few times. To prevent server overload, further conversion attempts for this file have been temporarily blocked. Please try again later.",
 			"unsupported_format": "仅支持图片、视频、音频和文档文件",
 			"format_output_only": "此格式目前只能用作输出（转换目标），不能用作输入。",
 			"vertd_not_found": "未找到 vertd 实例来开始视频转换。请确保实例 URL 设置正确。",
@@ -133,6 +143,8 @@
 			"filename_description": "这将决定下载时的文件名，<b>不包括文件扩展名。</b>你可以在格式中使用以下模板，它们将被替换为相关信息：<b>%name%</b>表示原始文件名，<b>%extension%</b>表示原始文件扩展名，<b>%date%</b>表示文件转换时的日期字符串。",
 			"placeholder": "FLUX_%name%",
 			"default_format": "默认转换格式",
+			"default_format_enable": "Enable",
+			"default_format_disable": "Disable",
 			"default_format_description": "这将更改上传此文件类型时自动选择的默认格式。",
 			"default_format_image": "图片",
 			"default_format_video": "视频",
@@ -219,7 +231,8 @@
 			"title": "资源",
 			"discord": "Discord",
 			"source": "源代码",
-			"email": "电子邮件"
+			"email": "电子邮件",
+			"privacy_note": "要了解我们的离线设备端处理、FLUX 集成和 GPLv3 合规性，请查看我们的 [privacy_link]隐私与许可[/privacy_link] 页面。. 需要帮助吗？您可以随时[support_link]联系支持[/support_link]。"
 		},
 		"donate": {
 			"title": "捐赠给 FLUX",
@@ -232,7 +245,9 @@
 			"thank_you": "感谢你的捐赠！",
 			"payment_failed": "支付失败：{message}{period}你未被收费。",
 			"donation_error": "处理捐赠时出错。请稍后重试。",
-			"payment_error": "获取支付详情时出错。请稍后重试。"
+			"payment_error": "获取支付详情时出错。请稍后重试。",
+			"donation_notice_official": "Your donations here go to the official FLUX instance (flux.sh), and helps to support the development of the project.",
+			"donation_notice_unofficial": "Your donations here go to the operator of this FLUX instance. If you wish to support the official FLUX developers, please visit [official_link]flux.sh[/official_link] instead."
 		},
 		"credits": {
 			"title": "致谢",
@@ -269,7 +284,7 @@
 		}
 	},
 	"privacy": {
-		"title": "隐私政策",
+		"title": "隐私与许可",
 		"summary": {
 			"title": "摘要",
 			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
@@ -277,6 +292,10 @@
 		"conversions": {
 			"title": "转换",
 			"description": "All conversions (images, documents, audio, and video) happen entirely locally on your device using WebAssembly versions of the relevant tools (e.g. ImageMagick, Pandoc, FFmpeg). This means your files never leave your device and we will never have access to them."
+		},
+		"donations": {
+			"title": "Donations",
+			"description": "We use Stripe on the [about_link]about[/about_link] page to collect donations. Stripe may collect certain information about the payment and device for fraud prevention as described in [stripe_link]their documentation on advanced fraud detection[/stripe_link]. External network requests to Stripe are deferred, and are only made after you click the button to pay."
 		},
 		"conversion_errors": {
 			"title": "转换错误",
@@ -300,9 +319,32 @@
 			"title": "联系",
 			"description": "如有问题，请发送电子邮件至：[email_link]hello@flux.sh[/email_link]。如果你使用的是第三方 FLUX 实例，请联系该实例的托管者。"
 		},
-		"last_updated": "最后更新：2025-10-19"
+		"last_updated": "最后更新：2025-10-19",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "使用 FLUX 转换"
-	}
+	},
+	"support_title": "联系客户支持",
+	"support_subtitle": "我们通常会在 24 小时内回复。安全连接。",
+	"support_name_label": "姓名（选填）",
+	"support_name_placeholder": "您的姓名",
+	"support_email_label": "电子邮箱地址",
+	"support_email_required": "电子邮箱地址是必填项",
+	"support_email_invalid": "电子邮箱格式不正确",
+	"support_subject_label": "主题",
+	"support_subject_placeholder": "主题",
+	"support_message_label": "我们能为您做些什么？",
+	"support_message_placeholder": "请详细描述您的问题...",
+	"support_sending": "正在发送您的反馈...",
+	"support_send_success": "谢谢您！您的反馈已成功发送。",
+	"support_send_error": "发送反馈失败。请检查您的网络连接并重试。",
+	"support_button_sending": "正在发送...",
+	"support_button_send": "发送消息"
 }

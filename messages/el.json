@@ -5,12 +5,14 @@
 		"convert": "Μετατροπή",
 		"settings": "Ρυθμίσεις",
 		"about": "Σχετικά",
-		"toggle_theme": "Εναλλαγή θέματος"
+		"toggle_theme": "Εναλλαγή θέματος",
+		"privacy": "Απόρρητο & Άδεια"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
 		"source_code": "Κώδικας",
-		"discord_server": "Discord"
+		"discord_server": "Discord",
+		"privacy_policy": "Privacy policy"
 	},
 	"upload": {
 		"title": "Ο μετατροπέας αρχείων που θα λατρέψετε.",
@@ -46,6 +48,18 @@
 		}
 	},
 	"convert": {
+		"archive_file": {
+			"extract": "Extract archive",
+			"extracting": "Detected archive: {filename}",
+			"extracted": "Extracted {extract_count} files from {filename}. {ignore_count} items were ignored.",
+			"detected": "Detected {type} files in {filename}.",
+			"audio": "audio",
+			"video": "video",
+			"doc": "document",
+			"image": "image",
+			"extract_error": "Error extracting {filename}: {error}"
+		},
+		"large_file_warning": "Due to browser / device limitations, video to audio conversion is disabled for this file as it is larger than {limit}GB. We recommend using Firefox or Safari for files of this size since they have less limitations.",
 		"external_warning": {
 			"title": "Προειδοποίηση εξωτερικού σέρβερ",
 			"text": "Εάν επιλέξετε να μετατρέψετε σε μορφή βίντεο, αυτά τα αρχεία θα μεταφορτωθούν σε εξωτερικό σέρβερ για μετατροπή. Θέλετε να συνεχίσετε;",
@@ -64,7 +78,9 @@
 			"video": "Βίντεο",
 			"doc": "Έγγραφο",
 			"image": "Εικόνα",
-			"placeholder": "Αναζήτηση μορφής"
+			"placeholder": "Αναζήτηση μορφής",
+			"no_formats": "No formats available",
+			"no_results": "No formats match your search"
 		},
 		"tooltips": {
 			"unknown_file": "Άγνωστος τύπος αρχείου",
@@ -78,12 +94,23 @@
 		"errors": {
 			"cant_convert": "Δεν μπορούμε να μετατρέψουμε αυτό το αρχείο.",
 			"vertd_server": "τι κάνεις...; υποτίθεται ότι πρέπει να εκτελέσεις τον σέρβερ vertd!",
+			"vertd_generic_view": "View error details",
 			"vertd_generic_body": "Παρουσιάστηκε σφάλμα κατά την προσπάθεια μετατροπής του βίντεό σας. Θέλετε να υποβάλετε αυτό το βίντεο στους προγραμματιστές για να βοηθήσετε στη διόρθωση αυτού του σφάλματος; Θα αποσταλεί μόνο το αρχείο βίντεό σας. Δεν θα μεταφορτωθούν αναγνωριστικά.",
 			"vertd_generic_title": "Σφάλμα μετατροπής βίντεο",
 			"vertd_generic_yes": "Υποβολή βίντεο",
 			"vertd_generic_no": "Μην υποβάλετε",
 			"vertd_failed_to_keep": "Αποτυχία διατήρησης του βίντεο στον σέρβερ: {error}",
+			"vertd_details": "View error details",
+			"vertd_details_body": "If you press submit, <b>your video will also be attached</b> alongside the error log which is always reported to us for review. The following information is the log that we automatically receive:",
+			"vertd_details_footer": "This information will only be used for troubleshooting purposes and will never be shared. View our [privacy_link]privacy policy[/privacy_link] for more details.",
+			"vertd_details_job_id": "<b>Job ID:</b> {jobId}",
+			"vertd_details_from": "<b>From format:</b> {from}",
+			"vertd_details_to": "<b>To format:</b> {to}",
+			"vertd_details_error_message": "<b>Error message:</b> [view_link]View error logs[/view_link]",
+			"vertd_details_close": "Close",
+			"vertd_ratelimit": "Your video, '{filename}', has failed to convert a few times. To prevent server overload, further conversion attempts for this file have been temporarily blocked. Please try again later.",
 			"unsupported_format": "Υποστηρίζονται μόνο αρχεία εικόνας, βίντεο, ήχου και εγγράφων",
+			"format_output_only": "This format can currently only be used as output (converted to), not as input.",
 			"vertd_not_found": "Δεν ήταν δυνατή η εύρεση της παρουσίας vertd για την έναρξη της μετατροπής βίντεο. Είστε βέβαιοι ότι η διεύθυνση URL έχει ρυθμιστεί σωστά;",
 			"worker_downloading": "Ο μετατροπέας {type} αρχικοποιείται αυτή τη στιγμή, παρακαλώ περιμένετε λίγο.",
 			"worker_error": "Ο μετατροπέας {type} αντιμετώπισε σφάλμα κατά την αρχικοποίηση, παρακαλώ δοκιμάστε ξανά αργότερα.",
@@ -116,6 +143,8 @@
 			"filename_description": "Αυτό θα καθορίσει το όνομα του αρχείου κατά τη λήψη, <b>χωρίς να περιλαμβάνει την επέκταση αρχείου.</b> Μπορείτε να τοποθετήσετε τα ακόλουθα πρότυπα στη μορφή, τα οποία θα αντικατασταθούν με τις σχετικές πληροφορίες: <b>%name%</b> για το αρχικό όνομα αρχείου, <b>%extension%</b> για την αρχική επέκταση αρχείου και <b>%date%</b> για μια συμβολοσειρά ημερομηνίας του πότε μετατράπηκε το αρχείο.",
 			"placeholder": "FLUX_%name%",
 			"default_format": "Προεπιλεγμένη μορφή μετατροπής",
+			"default_format_enable": "Enable",
+			"default_format_disable": "Disable",
 			"default_format_description": "Αυτό θα αλλάξει την προεπιλεγμένη μορφή που επιλέγεται όταν ανεβάζετε ένα αρχείο αυτού του τύπου.",
 			"default_format_image": "Εικόνες",
 			"default_format_video": "Βίντεο",
@@ -172,7 +201,15 @@
 			"total_size": "Συνολικό μέγεθος",
 			"files_cached_label": "Αρχεία σε προσωρινή μνήμη",
 			"cache_cleared": "Η προσωρινή μνήμη εκκαθαρίστηκε επιτυχώς!",
-			"cache_clear_error": "Αποτυχία εκκαθάρισης προσωρινής μνήμης."
+			"cache_clear_error": "Αποτυχία εκκαθάρισης προσωρινής μνήμης.",
+			"site_data_title": "Site data management",
+			"site_data_description": "Clear all site data including settings and cached files, resetting FLUX to its default state and reloading the page.",
+			"clear_all_data": "Clear all site data",
+			"clear_all_data_confirm_title": "Clear all site data?",
+			"clear_all_data_confirm": "This will reset all settings & cache, then reload the page. This action cannot be undone.",
+			"clear_all_data_cancel": "Cancel",
+			"all_data_cleared": "All site data cleared! Reloading page...",
+			"all_data_clear_error": "Failed to clear all site data."
 		},
 		"language": {
 			"title": "Γλώσσα",
@@ -194,7 +231,8 @@
 			"title": "Πόροι",
 			"discord": "Discord",
 			"source": "Πηγαίος κώδικας",
-			"email": "Email"
+			"email": "Email",
+			"privacy_note": "Για να μάθετε σχετικά με την τοπική επεξεργασία στη συσκευή σας, την ενσωμάτωση του FLUX και τη συμμόρφωση με την άδεια GPLv3, δείτε τη σελίδα μας [privacy_link]Απόρρητο & Άδεια[/privacy_link]. Χρειάζεστε βοήθεια; Μπορείτε να [support_link]επικοινωνήσετε με την υποστήριξη[/support_link] ανά πάσα στιγμή."
 		},
 		"donate": {
 			"title": "Δωρεά στο FLUX",
@@ -207,7 +245,9 @@
 			"thank_you": "Σας ευχαριστούμε για τη δωρεά σας!",
 			"payment_failed": "Η πληρωμή απέτυχε: {message}{period} Δεν χρεώθηκε ο λογαριασμός σας.",
 			"donation_error": "Παρουσιάστηκε σφάλμα κατά την επεξεργασία της δωρεάς σας. Παρακαλώ δοκιμάστε ξανά αργότερα.",
-			"payment_error": "Σφάλμα κατά την ανάκτηση στοιχείων πληρωμής. Παρακαλώ δοκιμάστε ξανά αργότερα."
+			"payment_error": "Σφάλμα κατά την ανάκτηση στοιχείων πληρωμής. Παρακαλώ δοκιμάστε ξανά αργότερα.",
+			"donation_notice_official": "Your donations here go to the official FLUX instance (flux.sh), and helps to support the development of the project.",
+			"donation_notice_unofficial": "Your donations here go to the operator of this FLUX instance. If you wish to support the official FLUX developers, please visit [official_link]flux.sh[/official_link] instead."
 		},
 		"credits": {
 			"title": "Τίτλοι",
@@ -237,11 +277,74 @@
 			"cancel": "Σφάλμα κατά την ακύρωση της μετατροπής για το {file}: {message}",
 			"magick": "Σφάλμα στο worker του Magick, η μετατροπή εικόνων μπορεί να μην λειτουργεί όπως αναμένεται.",
 			"ffmpeg": "Σφάλμα κατά τη φόρτωση του ffmpeg, ορισμένες λειτουργίες μπορεί να μην λειτουργούν.",
+			"pandoc": "Error loading Pandoc worker, document conversion may not work as expected.",
 			"no_audio": "Δεν βρέθηκε ροή ήχου.",
-			"invalid_rate": "Καθορίστηκε μη έγκυρος ρυθμός δειγματοληψίας: {rate}Hz"
+			"invalid_rate": "Καθορίστηκε μη έγκυρος ρυθμός δειγματοληψίας: {rate}Hz",
+			"file_too_large": "This file exceeds the {limit}GB browser / device limit. Try Firefox or Safari to convert this large file, which typically have higher limits."
 		}
+	},
+	"privacy": {
+		"title": "Απόρρητο & Άδεια",
+		"summary": {
+			"title": "Summary",
+			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
+		},
+		"conversions": {
+			"title": "Conversions",
+			"description": "All conversions (images, documents, audio, and video) happen entirely locally on your device using WebAssembly versions of the relevant tools (e.g. ImageMagick, Pandoc, FFmpeg). This means your files never leave your device and we will never have access to them."
+		},
+		"donations": {
+			"title": "Donations",
+			"description": "We use Stripe on the [about_link]about[/about_link] page to collect donations. Stripe may collect certain information about the payment and device for fraud prevention as described in [stripe_link]their documentation on advanced fraud detection[/stripe_link]. External network requests to Stripe are deferred, and are only made after you click the button to pay."
+		},
+		"conversion_errors": {
+			"title": "Conversion Errors",
+			"description": "When a video conversion fails, we may collect some anonymous data to help us diagnose the issue. This data may include:",
+			"list_job_id": "The job ID, which is the anonymized file name",
+			"list_format_from": "The format you converted from",
+			"list_format_to": "The format you converted to",
+			"list_stderr": "The FFmpeg stderr output of your job (error message)",
+			"list_video": "The actual video file (if given explicit permission)",
+			"footer": "This information is used solely for the purpose of diagnosing conversion issues. The actual video file will only ever be collected if you give us permission to do so, where it will only be used for troubleshooting."
+		},
+		"analytics": {
+			"title": "Analytics",
+			"description": "We self-host a Plausible instance for completely anonymous and aggregated analytics. Plausible does not use cookies and complies with all major privacy regulations (GDPR/CCPA/PECR). You can opt out of analytics in the \"Privacy & data\" section in [settings_link]settings[/settings_link] and read more about Plausible's privacy practices [plausible_link]here[/plausible_link]."
+		},
+		"local_storage": {
+			"title": "Local Storage",
+			"description": "We use your browser's local storage to save your settings, and your browser's session storage to temporarily store the GitHub contributors list for the \"About\" section to reduce repeated GitHub API requests. No personal data is stored or transmitted.<br/><br/>The WebAssembly versions of the conversion tools we use (FFmpeg, ImageMagick, Pandoc) are also stored locally on your browser when you first visit the website, so you don't need to redownload them each visit. No personal data is stored or transmitted. You may view or delete this data at any time in the \"Privacy & data\" section in [settings_link]settings[/settings_link]."
+		},
+		"contact": {
+			"title": "Contact",
+			"description": "For questions, email us at: [email_link]hello@flux.sh[/email_link]. If you are using a third-party instance of FLUX, please contact the hoster of that instance instead."
+		},
+		"last_updated": "Last updated: 2025-10-29",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "Μετατροπή με το FLUX"
-	}
+	},
+	"support_title": "Επικοινωνία με την Υποστήριξη",
+	"support_subtitle": "Συνήθως απαντάμε εντός 24 ωρών. Ασφαλής σύνδεση.",
+	"support_name_label": "Όνομα (Προαιρετικό)",
+	"support_name_placeholder": "Το όνομά σας",
+	"support_email_label": "Διεύθυνση Email",
+	"support_email_required": "Το Email είναι απαραίτητο",
+	"support_email_invalid": "Μη έγκυρη μορφή email",
+	"support_subject_label": "Θέμα",
+	"support_subject_placeholder": "Θέμα",
+	"support_message_label": "Πώς μπορούμε να βοηθήσουμε;",
+	"support_message_placeholder": "Παρακαλώ περιγράψτε το πρόβλημά σας λεπτομερώς...",
+	"support_sending": "Αποστολή των σχολίων σας...",
+	"support_send_success": "Σας ευχαριστούμε! Τα σχόλιά σας στάλθηκαν με επιτυχία.",
+	"support_send_error": "Αποτυχία αποστολής σχολίων. Παρακαλώ ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+	"support_button_sending": "Αποστολή...",
+	"support_button_send": "Αποστολή μηνύματος"
 }

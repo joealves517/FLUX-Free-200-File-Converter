@@ -5,7 +5,8 @@
 		"convert": "Converter",
 		"settings": "Ajustes",
 		"about": "Sobre",
-		"toggle_theme": "Alternar tema"
+		"toggle_theme": "Alternar tema",
+		"privacy": "Privacidade & Licença"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
@@ -230,7 +231,8 @@
 			"title": "Recursos",
 			"discord": "Discord",
 			"source": "Código fonte",
-			"email": "Email"
+			"email": "Email",
+			"privacy_note": "Para saber mais sobre nosso processamento local offline, integração com o FLUX e conformidade com a GPLv3, consulte nossa página de [privacy_link]Privacidade & Licença[/privacy_link]. Precisa de ajuda? Você pode [support_link]entrar em contato com o suporte[/support_link] a qualquer momento."
 		},
 		"donate": {
 			"title": "Doar para o FLUX",
@@ -282,7 +284,7 @@
 		}
 	},
 	"privacy": {
-		"title": "Política de Privacidade",
+		"title": "Privacidade & Licença",
 		"summary": {
 			"title": "Resumo",
 			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
@@ -317,9 +319,32 @@
 			"title": "Contato",
 			"description": "Para perguntas, envie um e-mail para: [email_link]hello@flux.sh[/email_link]. Se você estiver usando uma instância de terceiros do FLUX, entre em contato com o host dessa instância."
 		},
-		"last_updated": "Última atualização: 2025-11-27"
+		"last_updated": "Última atualização: 2025-11-27",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "Converter com FLUX"
-	}
+	},
+	"support_title": "Contatar Suporte",
+	"support_subtitle": "Geralmente respondemos em até 24 horas. Conexão segura.",
+	"support_name_label": "Nome (Opcional)",
+	"support_name_placeholder": "Seu nome",
+	"support_email_label": "Endereço de e-mail",
+	"support_email_required": "O e-mail é obrigatório",
+	"support_email_invalid": "Formato de e-mail inválido",
+	"support_subject_label": "Assunto",
+	"support_subject_placeholder": "Assunto",
+	"support_message_label": "Como podemos ajudar?",
+	"support_message_placeholder": "Por favor, descreva seu problema em detalhes...",
+	"support_sending": "Enviando seu feedback...",
+	"support_send_success": "Obrigado! Seu feedback foi enviado com sucesso.",
+	"support_send_error": "Falha ao enviar feedback. Verifique sua conexão e tente novamente.",
+	"support_button_sending": "Enviando...",
+	"support_button_send": "Enviar mensagem"
 }

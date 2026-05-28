@@ -1,14 +1,63 @@
 <script lang="ts">
 	import Panel from "$lib/components/visual/Panel.svelte";
-	import { CONTACT_EMAIL, DISCORD_URL, GITHUB_URL_FLUX } from "$lib/util/consts";
-	import { effects } from "$lib/store/index.svelte";
-	import GithubIcon from "$lib/components/visual/svg/Github.svelte";
-	import {
-		LinkIcon,
-		MailIcon,
-		MessageCircleMoreIcon,
-	} from "lucide-svelte";
+	import { LinkIcon } from "lucide-svelte";
 	import { m } from "$lib/paraglide/messages";
+	import SupportSheet from "$lib/components/functional/SupportSheet.svelte";
+
+	const privacyUrl = typeof chrome !== "undefined" && chrome.runtime
+		? chrome.runtime.getURL("vert.html#/privacy/")
+		: "#/privacy/";
+
+	let showSupport = $state(false);
+
+	function openPrivacyTab(e: MouseEvent) {
+		e.preventDefault();
+		if (typeof chrome !== "undefined" && chrome.tabs) {
+			chrome.tabs.create({ url: chrome.runtime.getURL("vert.html#/privacy/") });
+		} else {
+			window.open("#/privacy/", "_blank");
+		}
+	}
+
+	const rawNote = $derived(m["about.resources.privacy_note"]());
+	
+	// Dynamic parsing for both [privacy_link] and [support_link] tags
+	interface ParsedPart {
+		text: string;
+		type: "text" | "privacy" | "support";
+	}
+
+	const parsedParts = $derived.by<ParsedPart[]>(() => {
+		const text = rawNote;
+		const parts: ParsedPart[] = [];
+		const regex = /\[(privacy_link|support_link)\](.*?)\[\/\1\]/g;
+		let match;
+		let lastIndex = 0;
+
+		while ((match = regex.exec(text)) !== null) {
+			const matchIndex = match.index;
+			if (matchIndex > lastIndex) {
+				parts.push({
+					text: text.slice(lastIndex, matchIndex),
+					type: "text",
+				});
+			}
+			parts.push({
+				text: match[2],
+				type: match[1] === "privacy_link" ? "privacy" : "support",
+			});
+			lastIndex = regex.lastIndex;
+		}
+
+		if (lastIndex < text.length) {
+			parts.push({
+				text: text.slice(lastIndex),
+				type: "text",
+			});
+		}
+
+		return parts.length > 0 ? parts : [{ text, type: "text" }];
+	});
 </script>
 
 <Panel class="flex flex-col gap-4 p-6">
@@ -20,39 +69,36 @@
 		</div>
 		{m["about.resources.title"]()}
 	</h2>
-	<div class="flex gap-3">
-		<a
-			href={DISCORD_URL}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="btn {$effects
-				? ''
-				: '!scale-100'} flex-1 gap-2 p-4 rounded-full bg-button text-black dynadark:text-white flex items-center justify-center"
-		>
-			<MessageCircleMoreIcon size="24" class="inline-block mr-2" />
-			{m["about.resources.discord"]()}
-		</a>
-		<a
-			href={GITHUB_URL_FLUX}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="btn {$effects
-				? ''
-				: '!scale-100'} flex-1 gap-2 p-4 rounded-full bg-button text-black dynadark:text-white flex items-center justify-center"
-		>
-			<GithubIcon size="24" class="inline-block mr-2" />
-			{m["about.resources.source"]()}
-		</a>
-		<a
-			href="mailto:{CONTACT_EMAIL}"
-			target="_blank"
-			rel="noopener noreferrer"
-			class="btn {$effects
-				? ''
-				: '!scale-100'} flex-1 gap-2 p-4 rounded-full bg-button text-black dynadark:text-white flex items-center justify-center"
-		>
-			<MailIcon size="24" class="inline-block mr-2" />
-			{m["about.resources.email"]()}
-		</a>
+
+	<div class="text-base text-muted dynadark:text-muted font-normal">
+		<p class="leading-relaxed">
+			{#each parsedParts as part}
+				{#if part.type === "text"}
+					{part.text}
+				{:else if part.type === "privacy"}
+					<a
+						href={privacyUrl}
+						onclick={openPrivacyTab}
+						class="text-accent-purple hover:underline font-semibold"
+					>
+						{part.text}
+					</a>
+				{:else if part.type === "support"}
+					<a
+						href="#support"
+						onclick={(e) => {
+							e.preventDefault();
+							showSupport = true;
+						}}
+						class="text-accent-purple hover:underline font-semibold"
+					>
+						{part.text}
+					</a>
+				{/if}
+			{/each}
+		</p>
 	</div>
 </Panel>
+
+<SupportSheet bind:open={showSupport} onClose={() => { showSupport = false; }} />
+

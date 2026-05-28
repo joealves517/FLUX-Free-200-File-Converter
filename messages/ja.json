@@ -5,12 +5,14 @@
 		"convert": "変換",
 		"settings": "設定",
 		"about": "について",
-		"toggle_theme": "テーマを切り替える"
+		"toggle_theme": "テーマを切り替える",
+		"privacy": "プライバシー & ライセンス"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
 		"source_code": "ソースコード",
-		"discord_server": "Discordサーバー"
+		"discord_server": "Discordサーバー",
+		"privacy_policy": "Privacy policy"
 	},
 	"upload": {
 		"title": "きっと気に入るファイル変換ツール。",
@@ -46,6 +48,18 @@
 		}
 	},
 	"convert": {
+		"archive_file": {
+			"extract": "Extract archive",
+			"extracting": "Detected archive: {filename}",
+			"extracted": "Extracted {extract_count} files from {filename}. {ignore_count} items were ignored.",
+			"detected": "Detected {type} files in {filename}.",
+			"audio": "audio",
+			"video": "video",
+			"doc": "document",
+			"image": "image",
+			"extract_error": "Error extracting {filename}: {error}"
+		},
+		"large_file_warning": "Due to browser / device limitations, video to audio conversion is disabled for this file as it is larger than {limit}GB. We recommend using Firefox or Safari for files of this size since they have less limitations.",
 		"external_warning": {
 			"title": "外部サーバーの警告",
 			"text": "動画フォーマットへの変換を選択すると、ファイルは外部サーバーにアップロードされて変換されます。続行しますか？",
@@ -64,7 +78,9 @@
 			"video": "動画",
 			"doc": "ドキュメント",
 			"image": "画像",
-			"placeholder": "フォーマットを検索"
+			"placeholder": "フォーマットを検索",
+			"no_formats": "No formats available",
+			"no_results": "No formats match your search"
 		},
 		"tooltips": {
 			"unknown_file": "不明なファイルタイプ",
@@ -78,7 +94,23 @@
 		"errors": {
 			"cant_convert": "このファイルを変換できません。",
 			"vertd_server": "何してるの..? vertdサーバーを起動する必要があります！",
+			"vertd_generic_view": "View error details",
+			"vertd_generic_body": "An error occurred whilst whilst trying convert your video. Would you like to submit this video to the developers to help fix this bug? Only your video file will be sent. No identifiers will be uploaded.",
+			"vertd_generic_title": "Video conversion error",
+			"vertd_generic_yes": "Submit video",
+			"vertd_generic_no": "Don't submit",
+			"vertd_failed_to_keep": "Failed to keep the video on the server: {error}",
+			"vertd_details": "View error details",
+			"vertd_details_body": "If you press submit, <b>your video will also be attached</b> alongside the error log which is always reported to us for review. The following information is the log that we automatically receive:",
+			"vertd_details_footer": "This information will only be used for troubleshooting purposes and will never be shared. View our [privacy_link]privacy policy[/privacy_link] for more details.",
+			"vertd_details_job_id": "<b>Job ID:</b> {jobId}",
+			"vertd_details_from": "<b>From format:</b> {from}",
+			"vertd_details_to": "<b>To format:</b> {to}",
+			"vertd_details_error_message": "<b>Error message:</b> [view_link]View error logs[/view_link]",
+			"vertd_details_close": "Close",
+			"vertd_ratelimit": "Your video, '{filename}', has failed to convert a few times. To prevent server overload, further conversion attempts for this file have been temporarily blocked. Please try again later.",
 			"unsupported_format": "画像、動画、音声、ドキュメントのみ対応しています",
+			"format_output_only": "This format can currently only be used as output (converted to), not as input.",
 			"vertd_not_found": "動画変換を開始するためのvertdインスタンスが見つかりません。URLが正しいか確認してください。",
 			"worker_downloading": "{type}コンバーターを初期化中です。少々お待ちください。",
 			"worker_error": "{type}コンバーターの初期化中にエラーが発生しました。後でもう一度お試しください。",
@@ -111,6 +143,8 @@
 			"filename_description": "これはダウンロード時のファイル名を決定します（拡張子を除く）。以下のテンプレートを使用できます：<b>%name%</b>（元のファイル名）、<b>%extension%</b>（元の拡張子）、<b>%date%</b>（変換日時）。",
 			"placeholder": "FLUX_%name%",
 			"default_format": "デフォルト変換フォーマット",
+			"default_format_enable": "Enable",
+			"default_format_disable": "Disable",
 			"default_format_description": "このファイルタイプをアップロードしたときに自動で選択される形式を変更します。",
 			"default_format_image": "画像",
 			"default_format_video": "動画",
@@ -166,7 +200,16 @@
 			"loading_cache": "読み込み中...",
 			"total_size": "合計サイズ",
 			"files_cached_label": "キャッシュ済みファイル",
-			"cache_cleared": "キャッシュが正常にクリアされました！"
+			"cache_cleared": "キャッシュが正常にクリアされました！",
+			"cache_clear_error": "Failed to clear cache.",
+			"site_data_title": "Site data management",
+			"site_data_description": "Clear all site data including settings and cached files, resetting FLUX to its default state and reloading the page.",
+			"clear_all_data": "Clear all site data",
+			"clear_all_data_confirm_title": "Clear all site data?",
+			"clear_all_data_confirm": "This will reset all settings & cache, then reload the page. This action cannot be undone.",
+			"clear_all_data_cancel": "Cancel",
+			"all_data_cleared": "All site data cleared! Reloading page...",
+			"all_data_clear_error": "Failed to clear all site data."
 		},
 		"language": {
 			"title": "言語",
@@ -188,7 +231,8 @@
 			"title": "リソース",
 			"discord": "Discord",
 			"source": "ソース",
-			"email": "メール"
+			"email": "メール",
+			"privacy_note": "オフラインの端末上での処理、FLUXとの統合、およびGPLv3への準拠については、[privacy_link]プライバシー & ライセンス[/privacy_link]のページをご覧ください。. ヘルプが必要ですか？いつでも[support_link]サポートにお問い合わせ[/support_link]いただけます。"
 		},
 		"donate": {
 			"title": "FLUXを支援する",
@@ -201,7 +245,9 @@
 			"thank_you": "ご支援ありがとうございます！",
 			"payment_failed": "支払いに失敗しました: {message}{period} 請求は行われていません。",
 			"donation_error": "寄付の処理中にエラーが発生しました。後でもう一度お試しください。",
-			"payment_error": "支払い情報の取得中にエラーが発生しました。後でもう一度お試しください。"
+			"payment_error": "支払い情報の取得中にエラーが発生しました。後でもう一度お試しください。",
+			"donation_notice_official": "Your donations here go to the official FLUX instance (flux.sh), and helps to support the development of the project.",
+			"donation_notice_unofficial": "Your donations here go to the operator of this FLUX instance. If you wish to support the official FLUX developers, please visit [official_link]flux.sh[/official_link] instead."
 		},
 		"credits": {
 			"title": "クレジット",
@@ -231,11 +277,74 @@
 			"cancel": "{file}の変換キャンセルエラー：{message}",
 			"magick": "Magickワーカーでエラーが発生しました。画像変換が正常に動作しない可能性があります。",
 			"ffmpeg": "ffmpegの読み込みエラー。一部の機能が動作しない可能性があります。",
+			"pandoc": "Error loading Pandoc worker, document conversion may not work as expected.",
 			"no_audio": "音声ストリームが見つかりません。",
-			"invalid_rate": "無効なサンプリングレートが指定されました: {rate}Hz"
+			"invalid_rate": "無効なサンプリングレートが指定されました: {rate}Hz",
+			"file_too_large": "This file exceeds the {limit}GB browser / device limit. Try Firefox or Safari to convert this large file, which typically have higher limits."
 		}
+	},
+	"privacy": {
+		"title": "プライバシー & ライセンス",
+		"summary": {
+			"title": "Summary",
+			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
+		},
+		"conversions": {
+			"title": "Conversions",
+			"description": "All conversions (images, documents, audio, and video) happen entirely locally on your device using WebAssembly versions of the relevant tools (e.g. ImageMagick, Pandoc, FFmpeg). This means your files never leave your device and we will never have access to them."
+		},
+		"donations": {
+			"title": "Donations",
+			"description": "We use Stripe on the [about_link]about[/about_link] page to collect donations. Stripe may collect certain information about the payment and device for fraud prevention as described in [stripe_link]their documentation on advanced fraud detection[/stripe_link]. External network requests to Stripe are deferred, and are only made after you click the button to pay."
+		},
+		"conversion_errors": {
+			"title": "Conversion Errors",
+			"description": "When a video conversion fails, we may collect some anonymous data to help us diagnose the issue. This data may include:",
+			"list_job_id": "The job ID, which is the anonymized file name",
+			"list_format_from": "The format you converted from",
+			"list_format_to": "The format you converted to",
+			"list_stderr": "The FFmpeg stderr output of your job (error message)",
+			"list_video": "The actual video file (if given explicit permission)",
+			"footer": "This information is used solely for the purpose of diagnosing conversion issues. The actual video file will only ever be collected if you give us permission to do so, where it will only be used for troubleshooting."
+		},
+		"analytics": {
+			"title": "Analytics",
+			"description": "We self-host a Plausible instance for completely anonymous and aggregated analytics. Plausible does not use cookies and complies with all major privacy regulations (GDPR/CCPA/PECR). You can opt out of analytics in the \"Privacy & data\" section in [settings_link]settings[/settings_link] and read more about Plausible's privacy practices [plausible_link]here[/plausible_link]."
+		},
+		"local_storage": {
+			"title": "Local Storage",
+			"description": "We use your browser's local storage to save your settings, and your browser's session storage to temporarily store the GitHub contributors list for the \"About\" section to reduce repeated GitHub API requests. No personal data is stored or transmitted.<br/><br/>The WebAssembly versions of the conversion tools we use (FFmpeg, ImageMagick, Pandoc) are also stored locally on your browser when you first visit the website, so you don't need to redownload them each visit. No personal data is stored or transmitted. You may view or delete this data at any time in the \"Privacy & data\" section in [settings_link]settings[/settings_link]."
+		},
+		"contact": {
+			"title": "Contact",
+			"description": "For questions, email us at: [email_link]hello@flux.sh[/email_link]. If you are using a third-party instance of FLUX, please contact the hoster of that instance instead."
+		},
+		"last_updated": "Last updated: 2025-10-29",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "FLUXで変換"
-	}
+	},
+	"support_title": "サポートにお問い合わせ",
+	"support_subtitle": "通常24時間以内に返信いたします。安全な接続。",
+	"support_name_label": "お名前（任意）",
+	"support_name_placeholder": "お名前",
+	"support_email_label": "メールアドレス",
+	"support_email_required": "メールアドレスは必須です",
+	"support_email_invalid": "メールアドレスの形式が正しくありません",
+	"support_subject_label": "件名",
+	"support_subject_placeholder": "件名",
+	"support_message_label": "どのようなご用件でしょうか？",
+	"support_message_placeholder": "問題の詳細をご記入ください...",
+	"support_sending": "フィードバックを送信中...",
+	"support_send_success": "ありがとうございます！フィードバックが正常に送信されました。",
+	"support_send_error": "フィードバックの送信に失敗しました。接続を確認してもう一度お試しください。",
+	"support_button_sending": "送信中...",
+	"support_button_send": "メッセージを送信"
 }

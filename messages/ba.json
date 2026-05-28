@@ -5,7 +5,8 @@
 		"convert": "Konvertuj",
 		"settings": "Postavke",
 		"about": "O nama",
-		"toggle_theme": "Promijeni temu"
+		"toggle_theme": "Promijeni temu",
+		"privacy": "Privatnost & Licenca"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
@@ -230,7 +231,8 @@
 			"title": "Resursi",
 			"discord": "Discord",
 			"source": "Izvor",
-			"email": "Email"
+			"email": "Email",
+			"privacy_note": "Da biste saznali više o našoj lokalnoj obradi na uređaju, integraciji FLUX-a i usklađenosti sa GPLv3, pogledajte našu stranicu [privacy_link]Privatnost & Licenca[/privacy_link]. Trebate pomoć? Možete [support_link]kontaktirati podršku[/support_link] u bilo koje vrijeme."
 		},
 		"donate": {
 			"title": "Donirajte FLUX-u",
@@ -282,7 +284,7 @@
 		}
 	},
 	"privacy": {
-		"title": "Politika privatnosti",
+		"title": "Privatnost & Licenca",
 		"summary": {
 			"title": "Sažetak",
 			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
@@ -317,9 +319,32 @@
 			"title": "Kontakt",
 			"description": "Za pitanja, pišite nam na: [email_link]hello@flux.sh[/email_link]. Ako koristite treću stranu, kontaktirajte njihovog hostera."
 		},
-		"last_updated": "Posljednje ažuriranje: 2025-10-29"
+		"last_updated": "Posljednje ažuriranje: 2025-10-29",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "Konvertuj uz FLUX"
-	}
+	},
+	"support_title": "Kontaktirajte podršku",
+	"support_subtitle": "Obično odgovaramo u roku od 24 sata. Sigurna veza.",
+	"support_name_label": "Ime (opcionalno)",
+	"support_name_placeholder": "Vaše ime",
+	"support_email_label": "Email adresa",
+	"support_email_required": "Email je obavezan",
+	"support_email_invalid": "Neispravan format emaila",
+	"support_subject_label": "Predmet",
+	"support_subject_placeholder": "Predmet",
+	"support_message_label": "Kako vam možemo pomoći?",
+	"support_message_placeholder": "Molimo opišite svoj problem detaljno...",
+	"support_sending": "Slanje vaših povratnih informacija...",
+	"support_send_success": "Hvala vam! Vaša povratna informacija je uspješno poslana.",
+	"support_send_error": "Slanje povratnih informacija nije uspjelo. Molimo provjerite vezu i pokušajte ponovo.",
+	"support_button_sending": "Slanje...",
+	"support_button_send": "Pošalji poruku"
 }

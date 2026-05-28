@@ -4,6 +4,7 @@
 	import ConvertPage from "../../routes/convert/+page.svelte";
 	import SettingsPage from "../../routes/settings/+page.svelte";
 	import AboutPage from "../../routes/about/+page.svelte";
+	import PrivacyPage from "../../routes/privacy/+page.svelte";
 	import { page } from "$lib/util/router.svelte";
 </script>
 
@@ -14,6 +15,8 @@
 		<SettingsPage />
 	{:else if page.url.pathname.startsWith("/about")}
 		<AboutPage />
+	{:else if page.url.pathname.startsWith("/privacy")}
+		<PrivacyPage />
 	{:else}
 		<UploadPage />
 	{/if}

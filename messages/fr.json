@@ -5,12 +5,14 @@
 		"convert": "Convertir",
 		"settings": "Paramètres",
 		"about": "A propos",
-		"toggle_theme": "Changer de thème"
+		"toggle_theme": "Changer de thème",
+		"privacy": "Confidentialité & Licence"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
 		"source_code": "Code source",
-		"discord_server": "Serveur Discord"
+		"discord_server": "Serveur Discord",
+		"privacy_policy": "Privacy policy"
 	},
 	"upload": {
 		"title": "Le convertisseur de fichiers que vous allez adorer.",
@@ -46,6 +48,24 @@
 		}
 	},
 	"convert": {
+		"archive_file": {
+			"extract": "Extract archive",
+			"extracting": "Detected archive: {filename}",
+			"extracted": "Extracted {extract_count} files from {filename}. {ignore_count} items were ignored.",
+			"detected": "Detected {type} files in {filename}.",
+			"audio": "audio",
+			"video": "video",
+			"doc": "document",
+			"image": "image",
+			"extract_error": "Error extracting {filename}: {error}"
+		},
+		"large_file_warning": "Due to browser / device limitations, video to audio conversion is disabled for this file as it is larger than {limit}GB. We recommend using Firefox or Safari for files of this size since they have less limitations.",
+		"external_warning": {
+			"title": "External server warning",
+			"text": "If you choose to convert into a video format, those files will be uploaded to an external server to be converted. Do you want to continue?",
+			"yes": "Yes",
+			"no": "No"
+		},
 		"panel": {
 			"convert_all": "Convertir tout",
 			"download_all": "Télécharger l'ensemble au format .zip",
@@ -58,7 +78,9 @@
 			"video": "Video",
 			"doc": "Document",
 			"image": "Image",
-			"placeholder": "Format de recherche"
+			"placeholder": "Format de recherche",
+			"no_formats": "No formats available",
+			"no_results": "No formats match your search"
 		},
 		"tooltips": {
 			"unknown_file": "Type de fichier inconnu",
@@ -72,7 +94,23 @@
 		"errors": {
 			"cant_convert": "Nous ne pouvons pas convertir ce fichier",
 			"vertd_server": "Que fais-tu ? Tu es censé exécuter sur le serveur vertd !",
+			"vertd_generic_view": "View error details",
+			"vertd_generic_body": "An error occurred whilst whilst trying convert your video. Would you like to submit this video to the developers to help fix this bug? Only your video file will be sent. No identifiers will be uploaded.",
+			"vertd_generic_title": "Video conversion error",
+			"vertd_generic_yes": "Submit video",
+			"vertd_generic_no": "Don't submit",
+			"vertd_failed_to_keep": "Failed to keep the video on the server: {error}",
+			"vertd_details": "View error details",
+			"vertd_details_body": "If you press submit, <b>your video will also be attached</b> alongside the error log which is always reported to us for review. The following information is the log that we automatically receive:",
+			"vertd_details_footer": "This information will only be used for troubleshooting purposes and will never be shared. View our [privacy_link]privacy policy[/privacy_link] for more details.",
+			"vertd_details_job_id": "<b>Job ID:</b> {jobId}",
+			"vertd_details_from": "<b>From format:</b> {from}",
+			"vertd_details_to": "<b>To format:</b> {to}",
+			"vertd_details_error_message": "<b>Error message:</b> [view_link]View error logs[/view_link]",
+			"vertd_details_close": "Close",
+			"vertd_ratelimit": "Your video, '{filename}', has failed to convert a few times. To prevent server overload, further conversion attempts for this file have been temporarily blocked. Please try again later.",
 			"unsupported_format": "Seuls les fichiers image, vidéo, audio et document sont pris en charge",
+			"format_output_only": "This format can currently only be used as output (converted to), not as input.",
 			"vertd_not_found": "Impossible de trouver l'instance vertd pour démarrer la conversion vidéo. Êtes-vous sûr que l'URL de l'instance est correctement définie ?",
 			"worker_downloading": "Le convertisseur de {type} est en cours d'initialisation, veuillez patienter quelques instants.",
 			"worker_error": "Le convertisseur de {type} a rencontré une erreur lors de l'initialisation, veuillez réessayer plus tard.",
@@ -131,7 +169,7 @@
 			"unavailable": "indisponible (l'url est-elle correcte ?)",
 			"description": "Le projet <code>vertd</code> est un serveur de wrapper utilisant FFmpeg. Il vous permet de convertir des vidéos grâce à l'interface web pratique de FLUX'tout en exploitant la puissance de votre GPU pour une exécution rapide.",
 			"hosting_info": "Nous hébergeons une instance publique pour vous faciliter la tâche, mais il est assez facile d'héberger la vôtre sur votre PC ou votre serveur si vous savez ce que vous faites. Vous pouvez télécharger les binaires pour serveur [vertd_link]ici[/vertd_link] - le processus de mise en place deviendra plus facile à l'avenir, alors restez à l'écoute !",
-			"instance_url": "URL de l'instance",
+			"instance": "Instance",
 			"url_placeholder": "Exemple: http://localhost:24153",
 			"conversion_speed": "Vitesse de conversion",
 			"speed_description": "Ceci décrit le compromis entre vitesse et qualité. Des vitesses plus élevées entraîneront une qualité moindre, mais permettront d'effectuer le travail plus rapidement.",
@@ -142,14 +180,37 @@
 				"medium": "Moyen",
 				"fast": "Rapide",
 				"ultra_fast": "Ultra Rapide"
-			}
+			},
+			"auto_instance": "Auto (recommended)",
+			"eu_instance": "Falkenstein, Germany",
+			"us_instance": "Washington, USA",
+			"custom_instance": "Custom",
+			"instance_url": "URL de l'instance"
 		},
 		"privacy": {
 			"title": "Confidentialité",
 			"plausible_title": "Analyses plausibles",
 			"plausible_description": "Nous utilisons [plausible_link]Plausible[/plausible_link], un outil d'analyse axé sur la confidentialité, pour recueillir des statistiques totalement anonymes. Toutes les données sont anonymisées et agrégées, et aucune information identifiable n'est transmise ni stockée. Vous pouvez consulter les analyses [analytics_link]ici[/analytics_link] et choisir de vous désinscrire ci-dessous.",
 			"opt_in": "Inscription",
-			"opt_out": "Désinscription"
+			"opt_out": "Désinscription",
+			"cache_title": "Cache management",
+			"cache_description": "We cache the converter files on your browser so you don't have to re-download them every time, improving performance and reducing data usage.",
+			"refresh_cache": "Refresh cache",
+			"clear_cache": "Clear cache",
+			"files_cached": "{size} ({count} files)",
+			"loading_cache": "Loading...",
+			"total_size": "Total Size",
+			"files_cached_label": "Files Cached",
+			"cache_cleared": "Cache cleared successfully!",
+			"cache_clear_error": "Failed to clear cache.",
+			"site_data_title": "Site data management",
+			"site_data_description": "Clear all site data including settings and cached files, resetting FLUX to its default state and reloading the page.",
+			"clear_all_data": "Clear all site data",
+			"clear_all_data_confirm_title": "Clear all site data?",
+			"clear_all_data_confirm": "This will reset all settings & cache, then reload the page. This action cannot be undone.",
+			"clear_all_data_cancel": "Cancel",
+			"all_data_cleared": "All site data cleared! Reloading page...",
+			"all_data_clear_error": "Failed to clear all site data."
 		},
 		"language": {
 			"title": "Langue",
@@ -171,7 +232,8 @@
 			"title": "Resources",
 			"discord": "Discord",
 			"source": "Source",
-			"email": "Courriel"
+			"email": "Courriel",
+			"privacy_note": "Pour en savoir plus sur notre traitement local hors ligne, l'intégration de FLUX et la conformité GPLv3, veuillez consulter notre page [privacy_link]Confidentialité & Licence[/privacy_link]. Besoin d'aide ? Vous pouvez [support_link]contacter le support[/support_link] à tout moment."
 		},
 		"donate": {
 			"title": "Faire un don à FLUX",
@@ -184,7 +246,9 @@
 			"thank_you": "Merci pour votre don!",
 			"payment_failed": "Paiement échoué: {message}{period} Vous n'avez pas été facturé.",
 			"donation_error": "Une erreur s'est produite lors du traitement de votre don. Veuillez réessayer ultérieurement.",
-			"payment_error": "Erreur lors de la récupération des informations de paiement. Veuillez réessayer ultérieurement."
+			"payment_error": "Erreur lors de la récupération des informations de paiement. Veuillez réessayer ultérieurement.",
+			"donation_notice_official": "Your donations here go to the official FLUX instance (flux.sh), and helps to support the development of the project.",
+			"donation_notice_unofficial": "Your donations here go to the operator of this FLUX instance. If you wish to support the official FLUX developers, please visit [official_link]flux.sh[/official_link] instead."
 		},
 		"credits": {
 			"title": "Credits",
@@ -214,11 +278,74 @@
 			"cancel": "Erreur lors de l'annulation de la conversion pour {file}: {message}",
 			"magick": "Erreur depuis Magick Worker, la conversion d'image peut ne pas fonctionner comme prévu.",
 			"ffmpeg": "Erreur lors du chargement de ffmpeg, certaines fonctionnalités peuvent ne pas fonctionner.",
+			"pandoc": "Error loading Pandoc worker, document conversion may not work as expected.",
 			"no_audio": "Aucun flux audio détécté.",
-			"invalid_rate": "Taux d'échantillonnage spécifié non valide: {rate}Hz"
+			"invalid_rate": "Taux d'échantillonnage spécifié non valide: {rate}Hz",
+			"file_too_large": "This file exceeds the {limit}GB browser / device limit. Try Firefox or Safari to convert this large file, which typically have higher limits."
 		}
+	},
+	"privacy": {
+		"title": "Confidentialité & Licence",
+		"summary": {
+			"title": "Summary",
+			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
+		},
+		"conversions": {
+			"title": "Conversions",
+			"description": "All conversions (images, documents, audio, and video) happen entirely locally on your device using WebAssembly versions of the relevant tools (e.g. ImageMagick, Pandoc, FFmpeg). This means your files never leave your device and we will never have access to them."
+		},
+		"donations": {
+			"title": "Donations",
+			"description": "We use Stripe on the [about_link]about[/about_link] page to collect donations. Stripe may collect certain information about the payment and device for fraud prevention as described in [stripe_link]their documentation on advanced fraud detection[/stripe_link]. External network requests to Stripe are deferred, and are only made after you click the button to pay."
+		},
+		"conversion_errors": {
+			"title": "Conversion Errors",
+			"description": "When a video conversion fails, we may collect some anonymous data to help us diagnose the issue. This data may include:",
+			"list_job_id": "The job ID, which is the anonymized file name",
+			"list_format_from": "The format you converted from",
+			"list_format_to": "The format you converted to",
+			"list_stderr": "The FFmpeg stderr output of your job (error message)",
+			"list_video": "The actual video file (if given explicit permission)",
+			"footer": "This information is used solely for the purpose of diagnosing conversion issues. The actual video file will only ever be collected if you give us permission to do so, where it will only be used for troubleshooting."
+		},
+		"analytics": {
+			"title": "Analytics",
+			"description": "We self-host a Plausible instance for completely anonymous and aggregated analytics. Plausible does not use cookies and complies with all major privacy regulations (GDPR/CCPA/PECR). You can opt out of analytics in the \"Privacy & data\" section in [settings_link]settings[/settings_link] and read more about Plausible's privacy practices [plausible_link]here[/plausible_link]."
+		},
+		"local_storage": {
+			"title": "Local Storage",
+			"description": "We use your browser's local storage to save your settings, and your browser's session storage to temporarily store the GitHub contributors list for the \"About\" section to reduce repeated GitHub API requests. No personal data is stored or transmitted.<br/><br/>The WebAssembly versions of the conversion tools we use (FFmpeg, ImageMagick, Pandoc) are also stored locally on your browser when you first visit the website, so you don't need to redownload them each visit. No personal data is stored or transmitted. You may view or delete this data at any time in the \"Privacy & data\" section in [settings_link]settings[/settings_link]."
+		},
+		"contact": {
+			"title": "Contact",
+			"description": "For questions, email us at: [email_link]hello@flux.sh[/email_link]. If you are using a third-party instance of FLUX, please contact the hoster of that instance instead."
+		},
+		"last_updated": "Last updated: 2025-10-29",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
+	},
+	"toast": {
+		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "Convertir avec FLUX"
-	}
+	},
+	"support_title": "Contacter le support",
+	"support_subtitle": "Nous répondons généralement sous 24h. Connexion sécurisée.",
+	"support_name_label": "Nom (Optionnel)",
+	"support_name_placeholder": "Votre nom",
+	"support_email_label": "Adresse e-mail",
+	"support_email_required": "L'e-mail est requis",
+	"support_email_invalid": "Format d'e-mail invalide",
+	"support_subject_label": "Sujet",
+	"support_subject_placeholder": "Sujet",
+	"support_message_label": "Comment pouvons-nous vous aider ?",
+	"support_message_placeholder": "Veuillez décrire votre problème en détail...",
+	"support_sending": "Envoi de vos commentaires...",
+	"support_send_success": "Merci ! Vos commentaires ont été envoyés avec succès.",
+	"support_send_error": "Échec de l'envoi des commentaires. Veuillez vérifier votre connexion et réessayer.",
+	"support_button_sending": "Envoi en cours...",
+	"support_button_send": "Envoyer le message"
 }

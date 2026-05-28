@@ -155,6 +155,7 @@
 		<!-- Why FLUX? -->
 		<div class="flex flex-col gap-4 flex-1">
 			<About.Why />
+			<About.Resources />
 		</div>
 
 		<!-- Donate -->

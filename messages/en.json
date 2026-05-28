@@ -5,7 +5,8 @@
 		"convert": "Convert",
 		"settings": "Settings",
 		"about": "About",
-		"toggle_theme": "Toggle theme"
+		"toggle_theme": "Toggle theme",
+		"privacy": "Privacy & License"
 	},
 	"footer": {
 		"copyright": "© {year} FLUX.",
@@ -230,7 +231,8 @@
 			"title": "Resources",
 			"discord": "Discord",
 			"source": "Source",
-			"email": "Email"
+			"email": "Email",
+			"privacy_note": "To learn about our offline on-device processing, FLUX integration, and GPLv3 compliance, please view our [privacy_link]Privacy & License[/privacy_link] page. Need help? You can [support_link]Contact Support[/support_link] at any time."
 		},
 		"donate": {
 			"title": "Donate to FLUX",
@@ -282,7 +284,7 @@
 		}
 	},
 	"privacy": {
-		"title": "Privacy Policy",
+		"title": "Privacy & License",
 		"summary": {
 			"title": "Summary",
 			"description": "FLUX's privacy policy is very simple: we do not collect or store any data on you at all. We don't use cookies or trackers, analytics are completely private, and all conversions happen locally on your browser. FLUX self-hosts a Coolify instance for hosting the website, and a Plausible instance for completely anonymous and aggregated analytics. We use Stripe to process donations, which may collect some data used for fraud prevention.<br/><br/>Note this may only apply to the official FLUX instance at [vert_link]flux.sh[/vert_link]; third-party instances may handle your data differently."
@@ -317,12 +319,32 @@
 			"title": "Contact",
 			"description": "For questions, email us at: [email_link]hello@flux.sh[/email_link]. If you are using a third-party instance of FLUX, please contact the hoster of that instance instead."
 		},
-		"last_updated": "Last updated: 2025-10-29"
+		"last_updated": "Last updated: 2025-10-29",
+		"license": {
+			"title": "License & Open Source",
+			"description": "This extension is an open-source project that utilizes code from [vert_link]VERT[/vert_link]. Under the terms of the GNU GPLv3 license (the 3.0 copyleft license), you can access, inspect, and modify our full source code at our public [source_link]GitHub repository[/source_link]."
+		}
 	},
 	"toast": {
 		"insecure_context": "You are visiting FLUX in an insecure context (e.g. accessing over HTTP instead of HTTPS). Some features may not work as expected."
 	},
 	"context_menu": {
 		"convert_with_flux": "Convert with FLUX"
-	}
+	},
+	"support_title": "Contact Support",
+	"support_subtitle": "We usually respond within 24 hours. Offline secure connection.",
+	"support_name_label": "Name (Optional)",
+	"support_name_placeholder": "Your name",
+	"support_email_label": "Email Address",
+	"support_email_required": "Email is required",
+	"support_email_invalid": "Invalid email format",
+	"support_subject_label": "Subject",
+	"support_subject_placeholder": "Subject",
+	"support_message_label": "How can we help?",
+	"support_message_placeholder": "Please describe your issue in detail...",
+	"support_sending": "Sending your feedback...",
+	"support_send_success": "Thank you! Your feedback has been sent successfully.",
+	"support_send_error": "Failed to send feedback. Please check your connection and try again.",
+	"support_button_sending": "Sending...",
+	"support_button_send": "Send Message"
 }
